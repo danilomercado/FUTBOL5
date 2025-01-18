@@ -40,15 +40,19 @@ const Dashboard = () => {
           ARMA TU EQUIPO
         </h1>
         <NewPerson onAddPerson={addPersonHandler} />
-        <p className="text-lg text-gray-800 mb-8"></p>
 
         <div className="text-2xl font-bold text-black-900 ">
           <h3>Personas Agregadas</h3>
-          {personsFiltered.length === 0 ? (
-            <p>No hay personas cargadas</p>
-          ) : (
-            <Person persons={personsFiltered} onDelete={deletePersonHandler} />
-          )}
+          <div className="flex gap-4 mt-4">
+            {personsFiltered.length === 0 ? (
+              <p>No hay personas cargadas</p>
+            ) : (
+              <Person
+                persons={personsFiltered}
+                onDelete={deletePersonHandler}
+              />
+            )}
+          </div>
         </div>
       </div>
     </>

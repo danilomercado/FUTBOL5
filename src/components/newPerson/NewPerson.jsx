@@ -61,7 +61,6 @@ const NewPerson = ({ onAddPerson }) => {
     const newPerson = {
       personName: name,
       personFiligranas: finalFiligranas,
-      personOpinion: opinion,
     };
 
     onAddPerson(newPerson);
@@ -113,25 +112,6 @@ const NewPerson = ({ onAddPerson }) => {
             {warningMessage && (
               <p className="text-red-500 mt-1">{warningMessage}</p>
             )}
-          </div>
-
-          <div className="mb-5">
-            <label
-              htmlFor="opinion"
-              className="mb-3 block text-base font-bold text-[#000000]"
-            >
-              OPINION
-            </label>
-            <textarea
-              rows="4"
-              name="message"
-              id="message"
-              value={opinion}
-              required
-              onChange={changeOpinionHandler}
-              placeholder="Opinion sobre el jugador..."
-              className="w-full resize-none rounded-md border border-green-600 bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#1f4b2c] focus:shadow-md"
-            ></textarea>
           </div>
 
           {/* Error global del formulario */}
