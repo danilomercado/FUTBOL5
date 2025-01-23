@@ -7,16 +7,28 @@ const PersonItem = ({ id, name, filigranas, opinion, onShowModal }) => {
   };
 
   return (
-    <div className="mx-auto mt-11 w-80 transform overflow-hidden rounded-lg">
-      <div className="flex flex-row items-center justify-between p-4">
-        <h1>{name}</h1>
-        <h2>{filigranas}</h2>
-        <button
-          className="text-red-500 hover:underline"
-          onClick={handleDeleteClick}
-        >
-          Borrar
-        </button>
+    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
+      <div className="flex justify-end px-4 pt-4">
+        <div
+          id="dropdown"
+          className="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+        ></div>
+      </div>
+      <div className="flex flex-col items-center pb-10">
+        <h5 className="mb-1 text-xl font-bold text-black-900  text-gray-900">
+          {name}
+        </h5>
+        <span className="text-sm text-gray-500 dark:text-gray-400">
+          {filigranas}
+        </span>
+        <div className="flex mt-4 md:mt-6">
+          <button
+            className="text-red-500 hover:underline"
+            onClick={handleDeleteClick}
+          >
+            Borrar
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,6 @@ const persons = [
     id: 1,
     name: "Elian",
     filigranas: 5,
-    opinion: "Gay trolo",
   },
 ];
 
@@ -40,19 +39,17 @@ const Dashboard = () => {
           ARMA TU EQUIPO
         </h1>
         <NewPerson onAddPerson={addPersonHandler} />
-
         <div className="text-2xl font-bold text-black-900 ">
           <h3>Personas Agregadas</h3>
-          <div className="flex gap-4 mt-4">
-            {personsFiltered.length === 0 ? (
-              <p>No hay personas cargadas</p>
-            ) : (
-              <Person
-                persons={personsFiltered}
-                onDelete={deletePersonHandler}
-              />
-            )}
-          </div>
+        </div>
+      </div>
+      <div className="text-2xl font-bold text-black-900 ">
+        <div className="flex flex-wrap gap-4 mt-4 justify-center">
+          {personsFiltered.length === 0 ? (
+            <p>No hay personas cargadas</p>
+          ) : (
+            <Person persons={personsFiltered} onDelete={deletePersonHandler} />
+          )}
         </div>
       </div>
     </>

@@ -26,28 +26,28 @@ const Person = ({ persons, onDelete }) => {
   //
   const personMapped = persons.map((person) => (
     <PersonItem
-      key={person.id} // Asigna una clave única
-      id={person.id} // Pasa el ID al componente PersonItem
-      name={person.personName} // Pasa el nombre
-      filigranas={person.personFiligranas} // Pasa las filigranas
-      opinion={person.personOpinion} // Pasa la opinión
-      onShowModal={showModalHandler} // Función para mostrar el modal
+      key={person.id}
+      id={person.id}
+      name={person.personName}
+      filigranas={person.personFiligranas}
+      opinion={person.personOpinion}
+      onShowModal={showModalHandler}
     />
   ));
 
   return (
     <>
       <DeleteModal
-        isOpen={showDeleteModal} // Controla la visibilidad del modal
-        onClose={hideModalHandler} // Función para cerrar el modal
-        onConfirm={deletePersonHandler} // Llama a la función de eliminación
+        isOpen={showDeleteModal}
+        onClose={hideModalHandler}
+        onConfirm={deletePersonHandler}
       />
 
-      <div className="mt-4 gap-4 flex-wrap">
+      <div className="flex flex-wrap gap-5 mt-4 justify-center">
         {personMapped.length > 0 ? (
           personMapped
         ) : (
-          <p className="text-gray-500">No se encontraron personas cargadas</p> // Mensaje alternativo
+          <p>No se encontraron personas cargadas</p> // Mensaje alternativo
         )}
       </div>
     </>
