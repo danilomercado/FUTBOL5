@@ -97,7 +97,7 @@ const NewPerson = ({ onAddPerson }) => {
               htmlFor="filigranas"
               className="mb-3 block text-base font-bold text-[#000000]"
             >
-              FILIGRANAS
+              SKILLS
             </label>
             <input
               value={filigranas}

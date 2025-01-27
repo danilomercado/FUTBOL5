@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NewPerson from "../newPerson/NewPerson";
 import Person from "../person/Person";
-import ToggleTheme from "../toggleTheme/ToggleTheme";
+
 import CreateTeams from "../createTeams/CreateTeams";
 
 const Dashboard = () => {
