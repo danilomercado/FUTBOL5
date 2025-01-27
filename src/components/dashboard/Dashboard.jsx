@@ -2,17 +2,10 @@ import React, { useEffect, useState } from "react";
 import NewPerson from "../newPerson/NewPerson";
 import Person from "../person/Person";
 import ToggleTheme from "../toggleTheme/ToggleTheme";
-
-const persons = [
-  {
-    id: 1,
-    name: "Elian",
-    filigranas: 5,
-  },
-];
+import CreateTeams from "../createTeams/CreateTeams";
 
 const Dashboard = () => {
-  const [personsFiltered, setPersonsFiltered] = useState(persons);
+  const [personsFiltered, setPersonsFiltered] = useState([]);
 
   useEffect(() => {
     const personStored = JSON.parse(localStorage.getItem("persons"));
@@ -52,6 +45,7 @@ const Dashboard = () => {
             <Person persons={personsFiltered} onDelete={deletePersonHandler} />
           )}
         </div>
+        <CreateTeams persons={personsFiltered} />
       </div>
     </>
   );
