@@ -31,24 +31,44 @@ const CreateTeams = ({ persons }) => {
     setTeams([teamA, teamB]);
   };
 
+  const resetTeamsHandler = () => {
+    setTeams([]);
+  };
+
   return (
-    <>
-      <div className="mt-6">
+    <div className="mt-6">
+      <div className="flex flex-col items-center mt-6">
         {persons.length === 8 || persons.length === 10 ? (
           <button
             className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700"
             onClick={createTeamsHandler}
           >
-            {" "}
-            Armar Equipos
+            Crear Equipos
           </button>
         ) : (
           <p className="text-gray-500">
-            Se necesitan exactamente 8 o 10 personas para armar los equipos
+            Se necesitan exactamente 8 o 10 personas para formar equipos.
           </p>
         )}
+      </div>
 
-        {teams.length > 0 && (
+      {teams.length > 0 && (
+        <div className="flex flex-col items-center mt-6">
+          <div className="flex gap-4">
+            <button
+              className="px-4 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700"
+              onClick={createTeamsHandler}
+            >
+              Rehacer Equipos
+            </button>
+            <button
+              className="px-4 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700"
+              onClick={resetTeamsHandler}
+            >
+              Reiniciar
+            </button>
+          </div>
+
           <div className="flex justify-center mt-6 gap-10">
             {teams.map((team, index) => (
               <div
@@ -74,9 +94,9 @@ const CreateTeams = ({ persons }) => {
               </div>
             ))}
           </div>
-        )}
-      </div>
-    </>
+        </div>
+      )}
+    </div>
   );
 };
 
