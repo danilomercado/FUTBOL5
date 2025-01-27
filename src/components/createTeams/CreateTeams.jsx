@@ -101,13 +101,13 @@ const CreateTeams = ({ persons }) => {
             </div>
           </div>
 
-          <div className="flex justify-center mt-6 gap-10">
+          <div className="flex justify-center mt-10 gap-20">
             {teams.map((team, index) => (
               <div
                 key={index}
-                className="bg-gray-100 p-4 rounded-lg shadow w-1/2"
+                className="mx-px mt-11 w-80 border-2 border-black bg-[#91b39b] p-4 rounded-lg shadow"
               >
-                <h2 className="text-xl font-bold text-center">
+                <h2 className="text-3xl font-bold text-center">
                   Equipo {index + 1}
                 </h2>
                 <ul className="mt-4 space-y-2">
@@ -117,9 +117,9 @@ const CreateTeams = ({ persons }) => {
                       className="flex justify-between items-center"
                     >
                       <span>{member.personName}</span>
-                      {/* <span className="text-sm text-gray-500">
-                        ({classifyByFiligranas(member)})
-                      </span> */}
+                      <span className="text-xl text-gray-500">
+                        {member.personFiligranas.join("")}
+                      </span>
                     </li>
                   ))}
                 </ul>

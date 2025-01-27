@@ -3,6 +3,7 @@ import NewPerson from "../newPerson/NewPerson";
 import Person from "../person/Person";
 
 import CreateTeams from "../createTeams/CreateTeams";
+import Footer from "../footer/Footer";
 
 const Dashboard = () => {
   const [personsFiltered, setPersonsFiltered] = useState([]);
@@ -38,7 +39,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="text-2xl font-bold text-black-900 ">
-        <div className="flex flex-wrap gap-4 mt-4 justify-center">
+        <div className="">
           {personsFiltered.length === 0 ? (
             <p>No hay personas cargadas</p>
           ) : (
@@ -46,6 +47,7 @@ const Dashboard = () => {
           )}
         </div>
         <CreateTeams persons={personsFiltered} />
+        <Footer />
       </div>
     </>
   );
