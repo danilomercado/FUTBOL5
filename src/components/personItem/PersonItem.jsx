@@ -7,7 +7,7 @@ const PersonItem = ({ id, name, filigranas, opinion, onShowModal }) => {
   };
 
   return (
-    <div className="mx-px mt-11 w-80 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="mx-auto mt-11 w-full max-w-xs sm:w-80 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="flex justify-end px-4 pt-4">
         <div
           id="dropdown"
@@ -15,10 +15,10 @@ const PersonItem = ({ id, name, filigranas, opinion, onShowModal }) => {
         ></div>
       </div>
       <div className="flex flex-col items-center pb-10">
-        <h1 className="mb-1 text-2xl font-bold text-black-900 text-gray-900">
+        <h1 className="mb-1 text-lg sm:text-2xl font-bold text-gray-900">
           {name}
         </h1>
-        <span className="text-lg text-gray-500 dark:text-gray-400">
+        <span className="text-sm sm:text-lg text-gray-500 dark:text-gray-400">
           {filigranas}
         </span>
         <div className="flex mt-4 md:mt-6">
@@ -30,7 +30,6 @@ const PersonItem = ({ id, name, filigranas, opinion, onShowModal }) => {
           </button>
         </div>
       </div>
-      {/* </div> */}
     </div>
   );
 };

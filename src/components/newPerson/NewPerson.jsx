@@ -70,9 +70,9 @@ const NewPerson = ({ onAddPerson }) => {
   };
 
   return (
-    <div className="flex items-center justify-center p-12">
-      <div className="mx-auto w-full max-w-[550px] bg-white">
-        <form onSubmit={submitPersonHandler}>
+    <div className="flex items-center justify-center p-6 sm:p-12">
+      <div className="mx-auto w-full max-w-[550px] bg-white shadow-md rounded-lg">
+        <form onSubmit={submitPersonHandler} className="p-6 sm:p-8">
           <div className="mb-5">
             <label
               htmlFor="name"
@@ -88,7 +88,7 @@ const NewPerson = ({ onAddPerson }) => {
               placeholder="Nombre"
               required
               onChange={changeNameHandler}
-              className="w-full rounded-md border border-green-600 bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#1f4b2c] focus:shadow-md"
+              className="w-full rounded-md border border-green-600 bg-white py-3 px-4 sm:px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#1f4b2c] focus:shadow-md"
             />
           </div>
 
@@ -107,18 +107,20 @@ const NewPerson = ({ onAddPerson }) => {
               id="filigranas"
               required
               placeholder="Estrellas entre 1 y 5"
-              className="w-full rounded-md border border-green-600 bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#1f4b2c] focus:shadow-md"
+              className="w-full rounded-md border border-green-600 bg-white py-3 px-4 sm:px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#1f4b2c] focus:shadow-md"
             />
             {warningMessage && (
-              <p className="text-red-500 mt-1">{warningMessage}</p>
+              <p className="text-red-500 mt-1 text-sm">{warningMessage}</p>
             )}
           </div>
 
           {/* Error global del formulario */}
-          {formError && <p className="text-red-500">{formError}</p>}
+          {formError && (
+            <p className="text-red-500 text-sm mt-2">{formError}</p>
+          )}
 
           <div>
-            <button className="hover:shadow-form rounded-md bg-[#094111] py-3 px-8 text-base font-semibold text-white outline-none">
+            <button className="w-full sm:w-auto hover:shadow-form rounded-md bg-[#094111] py-3 px-6 text-base font-semibold text-white outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#094111]">
               Agregar Persona
             </button>
           </div>

@@ -39,7 +39,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="text-2xl font-bold text-black-900 ">
-        <div className="">
+        <div className="text-center">
           {personsFiltered.length === 0 ? (
             <p>No hay personas cargadas</p>
           ) : (
@@ -47,8 +47,8 @@ const Dashboard = () => {
           )}
         </div>
         <CreateTeams persons={personsFiltered} />
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

@@ -54,23 +54,22 @@ const CreateTeams = ({ persons }) => {
   };
 
   return (
-    <div className="mt-6">
+    <div className="mt-6 px-4">
       <div className="flex flex-col items-center mt-6">
         {persons.length === 8 || persons.length === 10 ? (
-          <div className=" flex justify-center items-center">
-            <div className="relative inline-flex  group">
-              <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#48915e] via-[#198539] to-[#086e27] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-              <a
+          <div className="flex justify-center items-center">
+            <div className="relative inline-flex group">
+              <div className="absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#48915e] via-[#198539] to-[#086e27] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+              <button
                 className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-[#094111] font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-                role="button"
                 onClick={createBalancedTeams}
               >
                 Armar Equipos
-              </a>
+              </button>
             </div>
           </div>
         ) : (
-          <p className="text-gray-500">
+          <p className="text-gray-500 text-center">
             Se necesitan exactamente 8 o 10 personas para formar equipos.
           </p>
         )}
@@ -78,36 +77,28 @@ const CreateTeams = ({ persons }) => {
 
       {teams.length > 0 && (
         <div className="flex flex-col items-center mt-6">
-          <div className="flex gap-4">
-            <div className="relative inline-flex  group">
-              <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#48915e] via-[#198539] to-[#086e27] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-              <a
-                role="button"
-                className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-[#094111] font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-                onClick={createBalancedTeams}
-              >
-                Rehacer Equipos
-              </a>
-            </div>
-            <div className="relative inline-flex  group">
-              <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#ff7575] via-[#ff2525] to-[#ff0000] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-              <a
-                role="button"
-                className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-[#ff0000] font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-                onClick={resetTeamsHandler}
-              >
-                Reiniciar
-              </a>
-            </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button
+              className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-[#094111] font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+              onClick={createBalancedTeams}
+            >
+              Rehacer Equipos
+            </button>
+            <button
+              className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-[#ff0000] font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+              onClick={resetTeamsHandler}
+            >
+              Reiniciar
+            </button>
           </div>
 
-          <div className="flex justify-center mt-10 gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
             {teams.map((team, index) => (
               <div
                 key={index}
-                className="mx-px mt-11 w-80 border-2 border-black bg-[#91b39b] p-4 rounded-lg shadow"
+                className="mx-auto w-full max-w-md border-2 border-black bg-[#91b39b] p-4 rounded-lg shadow"
               >
-                <h2 className="text-3xl font-bold text-center">
+                <h2 className="text-2xl md:text-3xl font-bold text-center">
                   Equipo {index + 1}
                 </h2>
                 <ul className="mt-4 space-y-2">
@@ -117,7 +108,7 @@ const CreateTeams = ({ persons }) => {
                       className="flex justify-between items-center"
                     >
                       <span>{member.personName}</span>
-                      <span className="text-xl text-gray-500">
+                      <span className="text-lg md:text-xl text-gray-500">
                         {member.personFiligranas.join("")}
                       </span>
                     </li>
