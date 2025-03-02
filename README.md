@@ -1,8 +1,32 @@
-# React + Vite
+# ArmaF5 ⚽
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bienvenido a F5 Team Builder, una aplicación web diseñada para facilitar la creación de equipos de fútbol 5. Con esta herramienta, los usuarios pueden organizar equipos de 4 o 5 jugadores, asignar habilidades y gestionar la distribución de jugadores de manera eficiente.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* 📌 Creación de equipos de 4 o 5 jugadores.
+
+* ⭐ Asignación de habilidades (Filigranas) a cada jugador.
+
+* 🎭 Mostrar/Ocultar habilidades con un solo botón.
+
+* 🗑️ Eliminar jugadores de la lista.
+
+* 🎨 Interfaz moderna y responsiva.
+
+## 🛠️ Tecnologías utilizadas
+
+### Esta aplicación está desarrollada con las siguientes herramientas y tecnologías:
+
+* ⚛️ React.js: Para la construcción de la interfaz de usuario.
+
+* 🎨 Tailwind CSS: Para el diseño y estilización responsiva.
+
+* 🌀 useState Hook : Manejo del estado de los jugadores y equipos.
+
+
+## 🔧 Link de la pagina
+[⚽ArmaF5⚽](https://armarequipof5.netlify.app/) 
+
+
+### 💡 Contribuciones y sugerencias son bienvenidas. Si tienes ideas para mejorar la aplicación, ¡abre un issue o haz un pull request! ⚽🔥
