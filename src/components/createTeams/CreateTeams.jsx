@@ -3,7 +3,13 @@ import PropTypes from "prop-types";
 
 const CreateTeams = ({ persons }) => {
   const [teams, setTeams] = useState([]);
+  const [showFiligranas, setShowFiligranas] = useState(true);
 
+  const toggleFiligranas = () => {
+    setShowFiligranas((prev) => !prev);
+  };
+
+  // NO SE USA :VV
   const classifyByFiligranas = (person) => {
     const filigranasCount = person.personFiligranas.length;
     if (filigranasCount <= 2) return "malo";
@@ -92,30 +98,55 @@ const CreateTeams = ({ persons }) => {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-            {teams.map((team, index) => (
-              <div
-                key={index}
-                className="mx-auto w-full max-w-md border-2 border-black bg-[#91b39b] p-4 rounded-lg shadow"
-              >
-                <h2 className="text-2xl md:text-3xl font-bold text-center">
-                  Equipo {index + 1}
-                </h2>
-                <ul className="mt-4 space-y-2">
-                  {team.map((member) => (
-                    <li
-                      key={member.id}
-                      className="flex justify-between items-center"
-                    >
-                      <span>{member.personName}</span>
-                      <span className="text-lg md:text-xl text-gray-500">
-                        {member.personFiligranas.join("")}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* TABLA DE EQUIPOS */}
+
+          <div className="flex flex-col items-center mt-10">
+            <button
+              onClick={toggleFiligranas}
+              className="mb-6 px-4 py-2 bg-[#094111] text-xl font-bold text-white rounded-lg shadow hover:bg-green-800 transition"
+            >
+              {showFiligranas ? "Ocultar Skills 😭 " : "Mostrar Skills 😎"}
+            </button>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+              {teams.map((team, index) => (
+                <div
+                  key={index}
+                  className="mx-auto w-full max-w-md rgb(206, 206, 206) p-4 rounded-lg shadow-lg"
+                >
+                  <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
+                    Equipo {index + 1}
+                  </h2>
+
+                  <table className="w-full text-black border border-gray-700 rounded-lg overflow-hidden shadow-md text-lg">
+                    <thead className="bg-[#386e40] text-white">
+                      <tr>
+                        <th className="px-4 py-3 border border-black">
+                          Nombre
+                        </th>
+                        <th className="px-4 py-3 border border-black">
+                          Skills
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-[#9a9e9b]">
+                      {team.map((member) => (
+                        <tr key={member.id} className="border-b">
+                          <td className="px-4 py-3 text-center border border-black">
+                            {member.personName}
+                          </td>
+                          <td className="px-4 py-3 text-center text-xl text-gray-700 border border-black">
+                            {showFiligranas
+                              ? member.personFiligranas.join("")
+                              : "😛"}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}

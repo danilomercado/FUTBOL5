@@ -2,4 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {}
+@layer components {
+}
+
+body {
+  background-color: rgb(206, 206, 206);
+}

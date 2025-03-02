@@ -4,18 +4,23 @@ const NewPerson = ({ onAddPerson }) => {
   const [name, setName] = useState("");
   const [filigranas, setFiligranas] = useState("");
   const [opinion, setOpinion] = useState("");
-  const [warningMessage, setWarningMessage] = useState(""); // Para mostrar advertencias
-  const [formError, setFormError] = useState(""); // Para el error global del formulario
+  const [warningMessage, setWarningMessage] = useState("");
+  const [formError, setFormError] = useState("");
 
   const changeNameHandler = (e) => {
-    setName(e.target.value);
+    const value = e.target.value;
+    if (value.length <= 10) {
+      setName(value);
+      setFormError(""); // Borra el error si está dentro del límite
+    } else {
+      setFormError("El nombre debe tener 10 caracteres o menos.");
+    }
   };
 
   const changeFiligranasHandler = (e) => {
     const value = e.target.value;
     setFiligranas(value);
 
-    // Validación para filigranas
     const minStars = 1;
     const maxStars = 5;
     const parsedFiligranas = parseInt(value);
@@ -29,7 +34,7 @@ const NewPerson = ({ onAddPerson }) => {
         `El valor debe estar entre ${minStars} y ${maxStars} estrellas.`
       );
     } else {
-      setWarningMessage(""); // Borra el mensaje si el valor es válido
+      setWarningMessage("");
     }
   };
 
@@ -40,20 +45,15 @@ const NewPerson = ({ onAddPerson }) => {
   const submitPersonHandler = (e) => {
     e.preventDefault();
 
-    const minStar = 1;
-    const maxStar = 5;
-
-    // Verificación final para la cantidad de filigranas
     if (filigranas === "" || warningMessage) {
       setFormError(
         "Por favor, ingrese un número de estrellas válido entre 1 y 5."
       );
-      return; // Evita el envío si hay un error
-    } else {
-      setFormError(""); // Borra el error si todo está bien
+      return;
     }
 
-    // Procesar las estrellas
+    const minStar = 1;
+    const maxStar = 5;
     const finalFiligranas = Array(
       Math.min(Math.max(parseInt(filigranas), minStar), maxStar)
     ).fill("⭐");
@@ -71,7 +71,7 @@ const NewPerson = ({ onAddPerson }) => {
 
   return (
     <div className="flex items-center justify-center p-6 sm:p-12">
-      <div className="mx-auto w-full max-w-[550px] bg-white shadow-md rounded-lg">
+      <div className="mx-auto w-full max-w-[550px]rgb(206, 206, 206) shadow-md rounded-lg">
         <form onSubmit={submitPersonHandler} className="p-6 sm:p-8">
           <div className="mb-5">
             <label
@@ -85,7 +85,7 @@ const NewPerson = ({ onAddPerson }) => {
               name="name"
               value={name}
               id="name"
-              placeholder="Nombre"
+              placeholder="Máximo 10 caracteres"
               required
               onChange={changeNameHandler}
               className="w-full rounded-md border border-green-600 bg-white py-3 px-4 sm:px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#1f4b2c] focus:shadow-md"
@@ -113,11 +113,6 @@ const NewPerson = ({ onAddPerson }) => {
               <p className="text-red-500 mt-1 text-sm">{warningMessage}</p>
             )}
           </div>
-
-          {/* Error global del formulario */}
-          {formError && (
-            <p className="text-red-500 text-sm mt-2">{formError}</p>
-          )}
 
           <div>
             <button className="w-full sm:w-auto hover:shadow-form rounded-md bg-[#094111] py-3 px-6 text-base font-semibold text-white outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#094111]">
