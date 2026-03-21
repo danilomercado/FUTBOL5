@@ -26,7 +26,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({ message: "API ArmaF5 funcionando" });
 });
-
+app.get("/api", (req, res) => {
+  res.json({ message: "API ArmaF5 funcionando" });
+});
 app.use("/api/auth", authRoutes);
 app.use("/api/players", playerRoutes);
 app.use("/api/teams", teamRoutes);
