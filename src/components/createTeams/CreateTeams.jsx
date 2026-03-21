@@ -18,10 +18,9 @@ const CreateTeams = ({ persons }) => {
     if (filigranasCount === 5) return "muy bueno";
   };
 
-  // Función para mezclar aleatoriamente un array
   const shuffleArray = (array) => {
     const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
+    for (let i = shuffled.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
@@ -57,101 +56,156 @@ const CreateTeams = ({ persons }) => {
 
   const resetTeamsHandler = () => {
     setTeams([]);
+    setShowFiligranas(true);
+  };
+
+  const getTeamScore = (team) => {
+    return team.reduce(
+      (acc, player) => acc + player.personFiligranas.length,
+      0,
+    );
   };
 
   return (
-    <div className="mt-6 px-4">
-      <div className="flex flex-col items-center mt-6">
-        {persons.length === 8 || persons.length === 10 ? (
-          <div className="flex justify-center items-center">
-            <div className="relative inline-flex group">
-              <div className="absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#48915e] via-[#198539] to-[#086e27] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+    <section className="mt-12 px-4">
+      <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-zinc-950/70 shadow-2xl backdrop-blur">
+        <div className="border-b border-white/10 bg-gradient-to-r from-emerald-900/40 via-zinc-950 to-lime-700/20 px-6 py-6 sm:px-8">
+          <div className="text-center">
+            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-emerald-400">
+              Modo partido
+            </p>
+            <h2 className="text-3xl font-black text-white sm:text-4xl">
+              Crear equipos balanceados
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-zinc-400">
+              El sistema reparte jugadores intentando equilibrar la suma total
+              de skills entre ambos equipos.
+            </p>
+          </div>
+        </div>
+
+        <div className="px-6 py-8 sm:px-8">
+          <div className="flex flex-col items-center">
+            {persons.length === 8 || persons.length === 10 ? (
               <button
-                className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-[#094111] font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                 onClick={createBalancedTeams}
+                className="rounded-2xl bg-gradient-to-r from-emerald-500 to-lime-400 px-8 py-4 text-lg font-black text-zinc-950 shadow-lg transition hover:scale-[1.02]"
               >
                 Armar Equipos
               </button>
-            </div>
-          </div>
-        ) : (
-          <p className="text-gray-500 text-center">
-            Se necesitan exactamente 8 o 10 personas para formar equipos.
-          </p>
-        )}
-      </div>
-
-      {teams.length > 0 && (
-        <div className="flex flex-col items-center mt-6">
-          <div className="flex flex-wrap justify-center gap-4">
-            <button
-              className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-[#094111] font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-              onClick={createBalancedTeams}
-            >
-              Rehacer Equipos
-            </button>
-            <button
-              className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-[#ff0000] font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-              onClick={resetTeamsHandler}
-            >
-              Reiniciar
-            </button>
+            ) : (
+              <div className="w-full max-w-2xl rounded-2xl border border-amber-500/20 bg-amber-500/10 px-5 py-4 text-center">
+                <p className="font-semibold text-amber-300">
+                  Se necesitan exactamente 8 o 10 personas para formar equipos.
+                </p>
+                <p className="mt-1 text-sm text-zinc-400">
+                  Ahora tenés {persons.length} cargadas.
+                </p>
+              </div>
+            )}
           </div>
 
-          {/* TABLA DE EQUIPOS */}
+          {teams.length > 0 && (
+            <div className="mt-10">
+              <div className="flex flex-col items-center gap-4">
+                <div className="flex flex-wrap justify-center gap-4">
+                  <button
+                    className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 px-6 py-3 text-base font-bold text-emerald-300 transition hover:bg-emerald-500 hover:text-white"
+                    onClick={createBalancedTeams}
+                  >
+                    Rehacer Equipos
+                  </button>
 
-          <div className="flex flex-col items-center mt-10">
-            <button
-              onClick={toggleFiligranas}
-              className="mb-6 px-4 py-2 bg-[#094111] text-xl font-bold text-white rounded-lg shadow hover:bg-green-800 transition"
-            >
-              {showFiligranas ? "Ocultar Skills 😭 " : "Mostrar Skills 😎"}
-            </button>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-              {teams.map((team, index) => (
-                <div
-                  key={index}
-                  className="mx-auto w-full max-w-md rgb(206, 206, 206) p-4 rounded-lg shadow-lg"
-                >
-                  <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
-                    Equipo {index + 1}
-                  </h2>
-
-                  <table className="w-full text-black border border-gray-700 rounded-lg overflow-hidden shadow-md text-lg">
-                    <thead className="bg-[#386e40] text-white">
-                      <tr>
-                        <th className="px-4 py-3 border border-black">
-                          Nombre
-                        </th>
-                        <th className="px-4 py-3 border border-black">
-                          Skills
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-[#9a9e9b]">
-                      {team.map((member) => (
-                        <tr key={member.id} className="border-b">
-                          <td className="px-4 py-3 text-center border border-black">
-                            {member.personName}
-                          </td>
-                          <td className="px-4 py-3 text-center text-xl text-gray-700 border border-black">
-                            {showFiligranas
-                              ? member.personFiligranas.join("")
-                              : "😛"}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                  <button
+                    className="rounded-2xl border border-red-500/20 bg-red-500/10 px-6 py-3 text-base font-bold text-red-300 transition hover:bg-red-500 hover:text-white"
+                    onClick={resetTeamsHandler}
+                  >
+                    Reiniciar
+                  </button>
                 </div>
-              ))}
+
+                <button
+                  onClick={toggleFiligranas}
+                  className="rounded-2xl border border-white/10 bg-zinc-900 px-6 py-3 text-base font-bold text-white transition hover:bg-zinc-800"
+                >
+                  {showFiligranas ? "Ocultar Skills 👀" : "Mostrar Skills ⭐"}
+                </button>
+              </div>
+
+              <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
+                {teams.map((team, index) => (
+                  <div
+                    key={index}
+                    className="overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/70 shadow-xl"
+                  >
+                    <div className="border-b border-white/10 bg-gradient-to-r from-emerald-800/30 to-lime-600/10 px-6 py-5">
+                      <div className="flex items-center justify-between gap-4">
+                        <div>
+                          <h3 className="text-2xl font-black text-white">
+                            Equipo {index + 1}
+                          </h3>
+                          <p className="mt-1 text-sm text-zinc-400">
+                            {team.length} jugadores
+                          </p>
+                        </div>
+
+                        <div className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-4 py-2 text-sm font-bold text-emerald-300">
+                          Total: {getTeamScore(team)} ⭐
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="overflow-x-auto">
+                      <table className="w-full min-w-[320px]">
+                        <thead className="bg-zinc-950/80">
+                          <tr className="text-sm uppercase tracking-wider text-zinc-300">
+                            <th className="px-4 py-4 text-left">Nombre</th>
+                            <th className="px-4 py-4 text-center">Skills</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          {team.map((member) => (
+                            <tr
+                              key={member.id}
+                              className="border-t border-white/10 bg-zinc-900/60 transition hover:bg-zinc-800/80"
+                            >
+                              <td className="px-4 py-4">
+                                <div className="flex items-center gap-3">
+                                  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-emerald-400/20 bg-emerald-500/10 text-sm font-bold text-emerald-300">
+                                    {member.personName
+                                      ?.charAt(0)
+                                      ?.toUpperCase() || "J"}
+                                  </div>
+                                  <span className="font-semibold text-white">
+                                    {member.personName}
+                                  </span>
+                                </div>
+                              </td>
+
+                              <td className="px-4 py-4 text-center text-xl">
+                                {showFiligranas
+                                  ? member.personFiligranas.join("")
+                                  : "🤐"}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
-      )}
-    </div>
+      </div>
+    </section>
   );
+};
+
+CreateTeams.propTypes = {
+  persons: PropTypes.array.isRequired,
 };
 
 export default CreateTeams;

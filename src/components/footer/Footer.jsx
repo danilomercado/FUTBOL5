@@ -2,38 +2,31 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <>
-      <footer className="bg-rgb(206, 206, 206)rounded-lg shadow-sm dark:bg-gray-900 m-4">
-        <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-          <div className="sm:flex sm:items-center sm:justify-between">
-            <a className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-              {/* <img src="/src/assets/images.png" className="h-8" /> */}
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                ArmaF5
-              </span>
-            </a>
-            <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-              <li>
-                <a
-                  href="https://github.com/danilomercado"
-                  className="hover:underline"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            © 2025{" "}
-            <a href="" className="hover:underline">
-              ArmaF5™
-            </a>
-            . All Rights Reserved.
-          </span>
+    <footer className="mt-16 border-t border-white/10 bg-zinc-950/80">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-8 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h3 className="text-xl font-black tracking-wide text-white">
+            ArmaF5
+          </h3>
+          <p className="mt-1 text-sm text-zinc-400">
+            Organizá jugadores y armá equipos con una estética más de fútbol.
+          </p>
         </div>
-      </footer>
-    </>
+
+        <div className="flex items-center gap-4 text-sm text-zinc-400">
+          <a
+            href="https://github.com/danilomercado"
+            target="_blank"
+            rel="noreferrer"
+            className="transition hover:text-emerald-400"
+          >
+            GitHub
+          </a>
+          <span className="text-zinc-700">•</span>
+          <span>© 2025 ArmaF5</span>
+        </div>
+      </div>
+    </footer>
   );
 };
 
