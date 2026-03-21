@@ -4,7 +4,6 @@ const api = axios.create({
   baseURL: "https://futbol5-production-bd1b.up.railway.app/api",
 });
 
-// 👉 agrega token automáticamente
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
@@ -15,7 +14,6 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// 👉 manejo global de errores
 api.interceptors.response.use(
   (res) => res,
   (error) => {
@@ -23,6 +21,7 @@ api.interceptors.response.use(
       localStorage.removeItem("token");
       window.location.href = "/login";
     }
+
     return Promise.reject(error);
   },
 );
