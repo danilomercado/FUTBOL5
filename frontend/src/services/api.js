@@ -1,23 +1,21 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:4000/api",
+  baseURL: "https://futbol5-production-bd1b.up.railway.app/api",
 });
 
-// 👉 siempre usa el token actual
+// 👉 agrega token automáticamente
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
-  } else {
-    delete config.headers.Authorization;
   }
 
   return config;
 });
 
-// 👉 si el token muere → logout automático
+// 👉 manejo global de errores
 api.interceptors.response.use(
   (res) => res,
   (error) => {
