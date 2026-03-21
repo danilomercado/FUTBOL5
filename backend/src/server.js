@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://TU-FRONT.vercel.app", // 🔥 cambiar después
+      "arma-f5.vercel.app", // 🔥 cambiar después
     ],
     credentials: true,
   }),
