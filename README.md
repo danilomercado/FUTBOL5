@@ -1,32 +1,102 @@
-# ArmaF5 ⚽
+# ⚽ ArmaF5
 
-Bienvenido a F5 Team Builder, una aplicación web diseñada para facilitar la creación de equipos de fútbol 5. Con esta herramienta, los usuarios pueden organizar equipos de 4 o 5 jugadores, asignar habilidades y gestionar la distribución de jugadores de manera eficiente.
+Aplicación full stack para armar equipos de fútbol balanceados, permitiendo gestionar jugadores y generar partidos de forma simple.
 
-## 🚀 Funcionalidades
+---
 
-* 📌 Creación de equipos de 4 o 5 jugadores.
+## 🚀 Tecnologías
 
-* ⭐ Asignación de habilidades (Filigranas) a cada jugador.
+### Frontend
+- React + Vite
+- Tailwind CSS
+- Axios
+- Context API
 
-* 🎭 Mostrar/Ocultar habilidades con un solo botón.
+### Backend
+- Node.js + Express
+- Prisma ORM
+- PostgreSQL
+- JWT Authentication
 
-* 🗑️ Eliminar jugadores de la lista.
+---
 
-* 🎨 Interfaz moderna y responsiva.
+## 🔐 Funcionalidades
 
-## 🛠️ Tecnologías utilizadas
+- Registro y login de usuarios
+- Autenticación con JWT
+- Roles: USER, ADMIN, SYSADMIN
+- CRUD de jugadores
+- Cada usuario gestiona sus propios jugadores
+- Admin puede ver todos los jugadores
+- Sistema preparado para armado de equipos balanceados
 
-### Esta aplicación está desarrollada con las siguientes herramientas y tecnologías:
+---
 
-* ⚛️ React.js: Para la construcción de la interfaz de usuario.
+## 🧠 Arquitectura
 
-* 🎨 Tailwind CSS: Para el diseño y estilización responsiva.
+- Frontend desacoplado del backend
+- API REST
+- Middleware de autenticación
+- Manejo de roles y permisos
+- Persistencia con Prisma + PostgreSQL
 
-* 🌀 useState Hook : Manejo del estado de los jugadores y equipos.
+---
+
+## ⚙️ Instalación
+
+### 1. Clonar repositorio
+
+```bash
+git clone https://github.com/tu-usuario/armaf5.git
+cd armaf5
+```
+
+---
+
+### 2. Backend
+
+```bash
+cd backend
+npm install
+```
+
+Crear archivo `.env`:
+
+```env
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DB
+JWT_SECRET=tu_secreto
+```
+
+Ejecutar migraciones:
+
+```bash
+npx prisma migrate dev
+```
+
+Correr servidor:
+
+```bash
+npm run dev
+```
+
+---
+
+### 3. Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+## 📌 Notas
+
+- El primer usuario puede ser promovido manualmente a SYSADMIN desde la base de datos
+- El sistema está preparado para escalar con más funcionalidades (equipos automáticos, estadísticas, etc.)
 
 
-## 🔧 Link de la pagina
-[⚽ArmaF5⚽](https://armarequipof5.netlify.app/) 
+## 👨‍💻 Autor
 
-
-### 💡 Contribuciones y sugerencias son bienvenidas. Si tienes ideas para mejorar la aplicación, ¡abre un issue o haz un pull request! ⚽🔥
+Desarrollado por Danilo Mercado
